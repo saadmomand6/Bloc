@@ -19,6 +19,7 @@ class ImagePickerScreen extends StatelessWidget {
           (builder: (context, state){
             return state.file == null ? InkWell(
               onTap: (){
+                // context.read<ImagePickerBloc>().add(GalleryPicker());
                 context.read<ImagePickerBloc>().add(CameraPicker());
               },
               child: const CircleAvatar(child: Icon(Icons.camera),)) : Image.file(File(state.file!.path.toString())); 
