@@ -5,15 +5,15 @@ abstract class TodoEvent extends Equatable {
   
 }
 
-class Add extends TodoEvent {
+class AddTOdoEvent extends TodoEvent {
   final String task;
-  const Add({required this.task});
+  const AddTOdoEvent({required this.task});
   @override
   List<Object?> get props => [task];
 }
-class Delete extends TodoEvent {
+class DeleteTOdoEvent extends TodoEvent {
 final Object task;
-  const Delete({required this.task});
+  const DeleteTOdoEvent({required this.task});
   @override
   List<Object?> get props => [task];
 }
