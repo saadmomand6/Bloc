@@ -22,12 +22,19 @@ class TodoScreen extends StatelessWidget {
           return ListView.builder(
               itemCount: state.todolist.length,
               itemBuilder: (context, index) {
+                debugPrint("${state.todolist}");
+                debugPrint("${index}");
                 return ListTile(
-                  title: Text('saad khan ${index.toString()}'),
+                  title: Text('saad khan ${state.todolist[index]}'),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      context.read<TodoBloc>().add(Delete(task: state.todolist[index]));
+                      context
+                          .read<TodoBloc>()
+                          .add(DeleteTOdoEvent(task: state.todolist[index]));
+                      print(state.todolist[index]);
+                      print(index);
+
                     },
                   ),
                 );
@@ -38,9 +45,9 @@ class TodoScreen extends StatelessWidget {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // for (var i = 0; i < 10; i++) {
-            context.read<TodoBloc>().add( const Add(task: 'task'));
-          // }
+          for (var i = 0; i < 10; i++) {
+          context.read<TodoBloc>().add( AddTOdoEvent(task: i.toString()));
+          }
         },
         child: const Icon(Icons.add),
       ),
